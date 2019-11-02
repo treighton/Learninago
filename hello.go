@@ -9,7 +9,11 @@ import (
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-	fmt.Fprint(w, "<h1>Welcome to my nightmare</h1>")
+	if r.URL.Path == "/" {
+		fmt.Fprint(w, "<h1>Welcome to my nightmare</h1>")
+	} else if r.URL.Path == "/contact" {
+		fmt.Fprint(w, "<h1>Contact</h1><a href=\"mailto:treighton@gmail.com\">Message me bitch</a>")
+	}
 }
 
 func main() {
